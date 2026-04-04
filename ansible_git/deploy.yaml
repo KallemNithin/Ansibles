@@ -1,0 +1,18 @@
+---
+- name: Deploying the git sources
+  hosts: application
+  become: yes
+  tasks:
+
+    - name: Pulling the sources
+      git: 
+        repo: https://github.com/KallemNithin/Ansibles.git
+        dest: /app/var/
+      notify: restart ap
+      
+  handlers:
+    - name: resart app
+      service:
+        name: httpd
+        state: restart
+    

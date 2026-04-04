@@ -1,0 +1,13 @@
+---
+- name: Example Ansible for Ansible HANDLERS
+  hosts: all
+  become: yes
+  remote_user: nithin_kallem
+  roles:
+    - handlers
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted

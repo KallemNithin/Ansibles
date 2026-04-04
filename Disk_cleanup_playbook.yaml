@@ -1,0 +1,10 @@
+---
+- name: Disk Cleanup
+  hosts: all
+  become: yes
+  tasks:
+    - name: cleaning files
+      file:
+        path: /var/log/app.log
+        state: absent
+        ignore_error: true

@@ -1,0 +1,9 @@
+---
+- name: User Creation
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create User
+      user:
+        name: demo.user
+        state: present

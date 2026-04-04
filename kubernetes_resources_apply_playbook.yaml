@@ -1,0 +1,13 @@
+---
+- name: Applying k8s resources
+  hosts: deployment
+
+  tasks:
+    - name: apply deployment
+      command: kubectl apply -f deploy.yml
+
+    - name: apply configmaps
+      command: kubectl apply -f configmaps.yml
+    
+    - name: apply services
+      command: kubectl apply -f svc.yaml

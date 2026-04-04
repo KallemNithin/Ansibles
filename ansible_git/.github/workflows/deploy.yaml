@@ -1,0 +1,23 @@
+
+name: Deploy app
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: action/checkout@v4
+      
+      - name: Install Ansible
+        run: |
+          sudo apt update && sudo apt install -y ansible
+        
+      - name: Run the playbook
+        run: |
+          ansible-playbook -i inventory.ini deploy.yaml

@@ -1,0 +1,9 @@
+---
+- name: My SQL server setup
+  hosts: DB
+  become: yes
+  tasks:
+    - name: Install my-sql
+      apt:
+        name: sql-server
+        state: present

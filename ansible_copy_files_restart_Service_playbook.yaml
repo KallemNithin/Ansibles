@@ -1,0 +1,16 @@
+---
+- name: Deploy the sources and restart
+  hosts: app
+  become: yes
+  tasks:
+    - name: Copy files
+      copy:
+        src: myapp.jar
+        dest: /opt/var/myapp.jar
+      any_errors_fatal: true  
+      notify: restart app
+  handlers:
+    - name: restart app
+      service:
+        name: nginx
+        state: restarted

@@ -1,0 +1,16 @@
+---
+- name: Package Install
+  hosts: all
+  become: yes
+  tasks:
+    -  name: Install https
+       yum:
+        name: httpd
+        state: present
+       when: ansible_os_family == "RedHat"
+    
+    - name: Start https
+      service:  
+        name: https
+        state: started
+        enabled: yes

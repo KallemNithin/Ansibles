@@ -1,0 +1,13 @@
+---
+- name: Create an EC2 instance
+  hosts: AWS
+
+  tasks:
+    - name: instance creation
+      amazon.aws.ec2_instance:
+        name: devops-instance
+        instance_type: t2.micro
+        image_id: ami-0abcdef12345
+        region: ap-south-1a
+        key_name: devops.ppk
+        wait: yes

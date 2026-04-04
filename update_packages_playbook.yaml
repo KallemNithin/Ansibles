@@ -1,0 +1,17 @@
+---
+- name: Update packages
+  hosts: ubuntu
+  become: yes
+  tasks:
+    - name: Updaing package
+      apt:
+        name: '*'
+        state: latest
+      when: ansible_os_family=='Debian'
+
+    - name: Updaing package
+      yum:
+        name: '*'
+        state: latest
+      when: ansible_os_family=='RedHat'
+    

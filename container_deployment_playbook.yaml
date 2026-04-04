@@ -1,0 +1,13 @@
+---
+- name: Container Deployment
+  hosts: default
+  become: yes
+  tasks:
+    - name: Deploy nginx
+      docker_container: 
+        app:  nginx-app
+        image: nginx-latest
+        state: present
+        ports:
+          - "80:80"
+      
