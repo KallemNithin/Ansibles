@@ -1,0 +1,14 @@
+---
+
+- name: Create MySQL user
+  community.mysql.mysql_user:
+   name: "{{ db_username }}"
+   password: "{{ db_password }}"
+   priv: '*.*:ALL'
+   state: present
+
+- name: Debug the vars
+  debug:
+  msg:
+    - "User: {{ db_username }}"
+    - "Password: {{ db_password }}"
